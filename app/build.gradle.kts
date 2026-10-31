@@ -160,11 +160,13 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.github.lonepheasantwarrior.talkify"
+        // TalkifyC 分支：applicationId 加 "c" 后缀，与上游 Talkify 可同机共存（数据完全隔离）；
+        // namespace 保持不变（R 类与代码引用不受影响）
+        applicationId = "com.github.lonepheasantwarrior.talkifyc"
         minSdk = 24
         targetSdk = 37
-        versionCode = 39
-        versionName = "1.0.37"
+        versionCode = 100
+        versionName = "1.0.37c"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -261,7 +263,7 @@ androidComponents {
             val abi = output.filters.firstOrNull()?.identifier ?: "universal"
             // debug 加后缀，避免与 release 产物同名导致手动上传时拿错包
             val kind = if (variant.name == "debug") "-debug" else ""
-            output.outputFileName.set("Talkify-v${output.versionName.get()}-${abi}${kind}.apk")
+            output.outputFileName.set("TalkifyC-v${output.versionName.get()}-${abi}${kind}.apk")
         }
     }
 }
@@ -281,6 +283,8 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
+    // 对话模式配置持久化（DataStore Preferences）
+    implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)
     // 本地 JVM 单测环境没有 Android 实现，提供真实的 org.json 以替代 android.jar 桩
     testImplementation(libs.org.json)

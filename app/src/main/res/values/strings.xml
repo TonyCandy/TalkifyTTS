@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Talkify</string>
+    <string name="app_name">TalkifyC</string>
 
     <!-- 通用 -->
     <string name="cancel">取消</string>
@@ -10,7 +10,7 @@
     <string name="loading">加载中…</string>
 
     <!-- 主界面 -->
-    <string name="app_subtitle">AI 语音合成</string>
+    <string name="app_subtitle">对话式语音合成</string>
 
     <string name="current_model">当前模型</string>
     <string name="select_provider">选择供应商</string>

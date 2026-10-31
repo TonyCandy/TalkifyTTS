@@ -23,6 +23,15 @@ class UpdateChecker(
     }
 
     fun checkForUpdates(currentVersion: String): UpdateCheckResult {
+        // TalkifyC 为独立分支（applicationId/签名均与上游不同）：上游新版本提示会引导
+        // 用户安装无法覆盖安装的上游 APK，故直接禁用在线更新检查。
+        // 正式接手维护时，改为指向自己的仓库并恢复检查即可。
+        TtsLogger.i(TAG) { "TalkifyC 分支已禁用上游更新检查，当前版本: $currentVersion" }
+        return UpdateCheckResult.NoUpdateAvailable
+    }
+
+    @Suppress("unused")
+    private fun checkForUpdatesUpstream(currentVersion: String): UpdateCheckResult {
         TtsLogger.i(TAG) { "开始检查更新，当前版本: $currentVersion" }
 
         var connection: HttpURLConnection? = null
