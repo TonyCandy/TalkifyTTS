@@ -31,3 +31,7 @@ __pycache__/
 *.jks
 *.keystore
 keystore.properties
+
+# 本地测试产物（APK 不入库；正式发布走 Release）
+/dist/
+*.apk
